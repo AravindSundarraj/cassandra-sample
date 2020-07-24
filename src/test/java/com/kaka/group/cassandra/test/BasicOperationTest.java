@@ -4,6 +4,7 @@ package com.kaka.group.cassandra.test;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;
 import com.kaka.group.config.CassandraConfig;
+import com.kaka.group.domain.Employee;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -58,6 +59,21 @@ public class BasicOperationTest {
 
       //assertTrue(columnExists);
 
+    }
+
+    @Test
+    public void testInsertData(){
+
+        Employee emp = new Employee();
+        emp.setEmpAdd("NJ");
+        emp.setEmpId(17);
+        emp.setEmpAge(37);
+        emp.setEmpDept("Software");
+        emp.setEmpPhNo(23234343);
+        emp.setEmpName("Aravind");
+        ResultSet rs = config.insertData(emp);
+      int s =  rs.all().size();
+      System.out.println("Size ====>>" +s);
     }
 
 
